@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Bag | Aurelia Fine Jewellery</title>
+  <link rel="icon" type="image/png" href="assets/images/aurelia_logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="container">
+    <div class="section-spacer">
+      <div class="section-title-wrapper" style="text-align:left;">
+        <h1 class="section-title">My Shopping Bag</h1>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1.3fr 0.7fr; gap:40px; margin-top:30px;">
+        <div id="cart-page-list-container" style="background-color:white; border-radius:var(--radius-lg); border:1px solid var(--border-light); padding:24px;">
+          <!-- Injected dynamically -->
+        </div>
+
+        <div style="background-color:white; border-radius:var(--radius-lg); border:1px solid var(--border-light); padding:24px; height:max-content;">
+          <h3 style="font-size:20px; font-weight:600; margin-bottom:20px; border-bottom:1px solid var(--border-light); padding-bottom:10px;">Order Summary</h3>
+          <div style="display:flex; justify-content:space-between; margin-bottom:12px; color:var(--text-muted);">
+            <span>Bag Subtotal</span>
+            <strong id="cart-summary-subtotal">₹0</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:12px; color:var(--text-muted);">
+            <span>Shipping & Delivery</span>
+            <strong style="color:var(--brand-teal);">FREE</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:20px; color:var(--text-muted); border-bottom:1px solid var(--border-light); padding-bottom:15px;">
+            <span>Estimated GST (3%)</span>
+            <strong id="cart-summary-gst">₹0</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:25px; font-size:18px; font-weight:700;">
+            <span>Total Payable</span>
+            <strong id="cart-summary-total" style="color:var(--brand-maroon);">₹0</strong>
+          </div>
+          <a href="checkout.html" class="btn btn-primary" style="width:100%; padding:14px;">Proceed to Secure Checkout</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="assets/data/products.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderCartPage();
+    });
+
+    function renderCartPage() {
+      const container = document.getElementById("cart-page-list-container");
+      const subtotalEl = document.getElementById("cart-summary-subtotal");
+      const gstEl = document.getElementById("cart-summary-gst");
+      const totalEl = document.getElementById("cart-summary-total");
+      
+      const cartItems = JSON.parse(localStorage.getItem("aurelia_cart")) || [];
+
+      if (cartItems.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:50px 0; color:var(--text-muted);">
+            <p style="font-size:48px; margin-bottom:15px;">🛍️</p>
+            <p>Your shopping bag is empty.</p>
+            <a href="collections.html" class="btn btn-primary" style="margin-top:20px;">Continue Shopping</a>
+          </div>
+        `;
+        subtotalEl.textContent = "₹0";
+        gstEl.textContent = "₹0";
+        totalEl.textContent = "₹0";
+        return;
+      }
+
+      container.innerHTML = cartItems.map(item => {
+        const prod = window.products.find(p => p.id === item.productId);
+        if (!prod) return "";
+        return `
+          <div class="cart-drawer-item" style="padding:24px 0; align-items:center;">
+            <img src="${prod.image}" alt="${prod.name}" style="width:90px; height:90px;">
+            <div class="cart-drawer-item-info">
+              <h5 style="font-size:18px; font-weight:600;">${prod.name}</h5>
+              <p>${item.metal || "18KT Yellow Gold"} | Ring Size: ${item.size || "12"}</p>
+              <div style="font-size:16px; font-weight:700; color:var(--brand-maroon); margin-top:8px;">₹${(prod.price * item.quantity).toLocaleString("en-IN")}</div>
+              <div class="cart-drawer-item-controls" style="margin-top:12px; width:220px;">
+                <div class="quantity-selector">
+                  <button class="quantity-btn" onclick="updateCartPageQty(${prod.id}, -1)">-</button>
+                  <input type="text" value="${item.quantity}" class="quantity-input" readonly>
+                  <button class="quantity-btn" onclick="updateCartPageQty(${prod.id}, 1)">+</button>
+                </div>
+                <button class="cart-remove-btn" onclick="removeFromCartPage(${prod.id})">Remove Item</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      const subtotal = cartItems.reduce((sum, item) => {
+        const prod = window.products.find(p => p.id === item.productId);
+        return sum + (prod ? prod.price * item.quantity : 0);
+      }, 0);
+
+      const gst = Math.round(subtotal * 0.03);
+      const total = subtotal + gst;
+
+      subtotalEl.textContent = "₹" + subtotal.toLocaleString("en-IN");
+      gstEl.textContent = "₹" + gst.toLocaleString("en-IN");
+      totalEl.textContent = "₹" + total.toLocaleString("en-IN");
+    }
+
+    window.updateCartPageQty = function(productId, delta) {
+      window.updateCartQty(productId, delta);
+      renderCartPage();
+    };
+
+    window.removeFromCartPage = function(productId) {
+      window.removeFromCart(productId);
+      renderCartPage();
+    };
+  </script>
+</body>
+</html>

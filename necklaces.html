@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imperial Necklaces | Aurelia Fine Jewellery</title>
+  <link rel="icon" type="image/png" href="assets/images/aurelia_logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <main class="container">
+    <div class="section-spacer" style="margin-bottom: 20px;">
+      <div class="section-title-wrapper" style="text-align: left; border-bottom: 1px solid var(--border-light); padding-bottom: 20px;">
+        <h1 class="section-title" style="font-size: 42px;">Imperial Necklaces</h1>
+        <p class="section-subtitle">Exquisite designs curated for you</p>
+      </div>
+    </div>
+
+    <!-- Category Rendering Root -->
+    <div class="category-page-container" id="category-page-root" data-category="necklaces"  >
+      <!-- Sidebar Filters -->
+      <aside class="filter-sidebar">
+        <div class="filter-group">
+          <h4>Metal Color</h4>
+          <div class="filter-options">
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-checkbox-input filter-material" value="Yellow Gold"> Yellow Gold
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-checkbox-input filter-material" value="Rose Gold"> Rose Gold
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-checkbox-input filter-material" value="White Gold"> White Gold
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-checkbox-input filter-material" value="Platinum"> Platinum
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h4>Price Range</h4>
+          <div class="filter-options">
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-checkbox-input filter-price" value="under-25k"> Under ₹25,000
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-checkbox-input filter-price" value="25k-50k"> ₹25,000 - ₹50,000
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-checkbox-input filter-price" value="above-50k"> Above ₹50,000
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Products Grid Main -->
+      <section>
+        <div class="grid-top-bar">
+          <span class="grid-top-bar-count" id="category-product-count">0 items found</span>
+          <div class="grid-top-bar-controls">
+            <div class="grid-layout-buttons">
+              <span class="grid-layout-btn active" id="layout-grid-btn">Grid</span>
+              <span class="grid-layout-btn" id="layout-list-btn">List</span>
+            </div>
+            <div>
+              <label for="category-sort" style="font-size:12px; margin-right:8px; font-weight:600;">Sort By</label>
+              <select id="category-sort" class="sort-select">
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Customer Rating</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="products-grid-layout" id="category-grid-items">
+          <!-- Injected dynamically by script.js -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="assets/data/products.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Grid list view toggle helper
+    document.getElementById("layout-list-btn").addEventListener("click", () => {
+      document.getElementById("category-grid-items").classList.add("list-view");
+      document.getElementById("layout-list-btn").classList.add("active");
+      document.getElementById("layout-grid-btn").classList.remove("active");
+    });
+    document.getElementById("layout-grid-btn").addEventListener("click", () => {
+      document.getElementById("category-grid-items").classList.remove("list-view");
+      document.getElementById("layout-grid-btn").classList.add("active");
+      document.getElementById("layout-list-btn").classList.remove("active");
+    });
+  </script>
+</body>
+</html>

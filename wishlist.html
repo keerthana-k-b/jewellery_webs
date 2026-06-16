@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Wishlist | Aurelia Fine Jewellery</title>
+  <link rel="icon" type="image/png" href="assets/images/aurelia_logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="container">
+    <div class="section-spacer">
+      <div class="section-title-wrapper" style="text-align:left; border-bottom:1px solid var(--border-light); padding-bottom:20px;">
+        <h1 class="section-title">My Wishlist</h1>
+        <p class="section-subtitle">Designs saved for your future orders</p>
+      </div>
+
+      <div class="products-grid-layout" id="wishlist-page-grid" style="margin-top:30px;">
+        <!-- Dynamic cards injected here -->
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="assets/data/products.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderWishlistPage();
+    });
+
+    function renderWishlistPage() {
+      const container = document.getElementById("wishlist-page-grid");
+      if (!container) return;
+
+      const wishlistItems = JSON.parse(localStorage.getItem("aurelia_wishlist")) || [];
+
+      if (wishlistItems.length === 0) {
+        container.style.gridTemplateColumns = "1fr";
+        container.innerHTML = `
+          <div style="text-align:center; padding:80px 0; color:var(--text-muted);">
+            <p style="font-size:48px; margin-bottom:15px;">🤍</p>
+            <p>You have no saved items in your wishlist.</p>
+            <a href="collections.html" class="btn btn-primary" style="margin-top:20px;">Explore Products</a>
+          </div>
+        `;
+        return;
+      }
+
+      container.style.gridTemplateColumns = "repeat(4, 1fr)";
+      container.innerHTML = wishlistItems.map(productId => {
+        const p = window.products.find(item => item.id === productId);
+        if (!p) return "";
+        return `
+          <div class="product-card">
+            <div class="product-card-img-wrap">
+              <a href="product-details.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a>
+              <button class="product-card-wishlist-btn active" onclick="removeFromWishlistPage(${p.id})">
+                <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+            </div>
+            <div class="product-card-info">
+              <span class="product-card-sku">${p.sku}</span>
+              <h4 class="product-card-name">${p.name}</h4>
+              <div class="product-card-price-row">
+                <span class="product-card-price">₹${p.price.toLocaleString("en-IN")}</span>
+              </div>
+              <div style="display:flex; gap:10px; margin-top:15px;">
+                <button class="btn btn-primary" onclick="moveToBagPage(${p.id})" style="flex:1; font-size:10px; padding:8px 0;">Add to Bag</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    window.removeFromWishlistPage = function(productId) {
+      window.removeFromWishlist(productId);
+      renderWishlistPage();
+    };
+
+    window.moveToBagPage = function(productId) {
+      window.moveToCart(productId);
+      window.removeFromWishlist(productId);
+      renderWishlistPage();
+    };
+  </script>
+</body>
+</html>

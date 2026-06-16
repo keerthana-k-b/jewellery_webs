@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jewellery Details | Aurelia Fine Jewellery</title>
+  <link rel="icon" type="image/png" href="assets/images/aurelia_logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <main class="container">
+    <div class="product-details-container" id="product-details-root">
+      
+      <!-- Gallery Left -->
+      <section class="product-gallery-section">
+        <div class="product-gallery-thumbnails">
+          <img class="thumbnail-img active" src="" alt="View 1" onerror="this.src='data:image/svg+xml;utf8,<svg width=\'70\' height=\'70\'></svg>'">
+          <img class="thumbnail-img" src="" alt="View 2" onerror="this.src='data:image/svg+xml;utf8,<svg width=\'70\' height=\'70\'></svg>'">
+          <img class="thumbnail-img" src="" alt="View 3" onerror="this.src='data:image/svg+xml;utf8,<svg width=\'70\' height=\'70\'></svg>'">
+        </div>
+        <div class="product-gallery-main">
+          <img id="det-main-img" src="" alt="Main Image">
+        </div>
+      </section>
+
+      <!-- Meta Info Right -->
+      <section>
+        <span class="product-meta-sku" id="det-sku">SKU-00000</span>
+        <h1 class="product-meta-title" id="det-title">Loading Product Title...</h1>
+        
+        <div class="product-meta-rating">
+          <span class="stars">★★★★★</span>
+          <span id="det-reviews-count">(0 reviews)</span>
+        </div>
+
+        <div class="product-meta-price-box">
+          <span class="detail-price" id="det-price">₹0</span>
+          <span class="detail-original-price" id="det-original-price">₹0</span>
+          <span class="badge badge-offer" id="det-offer-badge" style="background-color:#E25C5C; color:white;">0% OFF</span>
+          <br>
+          <span class="price-breakdown-btn" id="price-breakdown-trigger">View Detailed Price Breakdown & Taxes</span>
+        </div>
+
+        <p class="product-description" id="det-description" style="color:var(--text-muted); margin-bottom: 24px; font-size:14px;"></p>
+
+        <!-- Variant Configurator Selectors -->
+        <div class="variant-selector-group">
+          <h5>Metal Type</h5>
+          <div class="variant-options">
+            <button class="variant-option-btn metal-option active" data-value="18KT Yellow Gold">18KT Gold</button>
+            <button class="variant-option-btn metal-option" data-value="22KT Gold">22KT Gold</button>
+            <button class="variant-option-btn metal-option" data-value="18KT Rose Gold">Rose Gold</button>
+            <button class="variant-option-btn metal-option" data-value="Platinum">Platinum</button>
+          </div>
+        </div>
+
+        <div class="variant-selector-group">
+          <h5>Ring Size (Standard Indian)</h5>
+          <div class="variant-options">
+            <button class="variant-option-btn size-option" data-value="10">10</button>
+            <button class="variant-option-btn size-option active" data-value="12">12</button>
+            <button class="variant-option-btn size-option" data-value="14">14</button>
+            <button class="variant-option-btn size-option" data-value="16">16</button>
+          </div>
+        </div>
+
+        <!-- Pincode Checker -->
+        <div class="pincode-checker-box">
+          <h5>Check Delivery Availability</h5>
+          <div class="pincode-checker-input-wrap">
+            <input type="text" placeholder="Enter 6-digit Pincode" id="pincode-input" maxlength="6">
+            <button class="btn btn-primary" id="pincode-btn">Check</button>
+          </div>
+          <div id="pincode-status" style="margin-top:10px; font-size:12px;"></div>
+        </div>
+
+        <!-- Add Actions -->
+        <div style="display:flex; gap:16px;">
+          <button class="btn btn-primary" id="det-buy-btn" style="flex:1; padding:16px;">Add To Shopping Bag</button>
+          <button class="btn btn-secondary" onclick="alert('Product added to Compare queue!')" style="padding:16px;">Compare</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Specs & Reviews Tabs -->
+    <div class="product-tabs-wrapper">
+      <div class="tabs-nav">
+        <button class="tab-nav-btn active" data-target="spec-panel">Product Specifications</button>
+        <button class="tab-nav-btn" data-target="review-panel">Reviews & Ratings</button>
+      </div>
+      <div class="tab-panel active" id="spec-panel">
+        <table class="spec-table">
+          <tbody id="spec-table-body">
+            <!-- Injected by script.js -->
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-panel" id="review-panel">
+        <div id="reviews-list-container">
+          <!-- Injected by script.js -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="assets/data/products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurelia Fine Jewellery | A TATA Enterprise Product</title>
+  <link rel="icon" type="image/png" href="assets/images/aurelia_logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Dynamic Global Header injected by script.js -->
+  <div id="header-container"></div>
+
+  <main>
+    <!-- 1. Hero Banner Slider -->
+    <section class="hero-slider-container">
+      <div class="hero-slider" id="hero-slider">
+        <!-- Slide 1 (Burgundy Background) -->
+        <div class="hero-slide active" style="background-image: url('assets/images/hero-1.jpg'), linear-gradient(135deg, #4A102A 0%, #5A1833 100%);">
+          <div class="hero-slide-content">
+            <h4>A TATA Enterprise</h4>
+            <h2>Under ₹30,000<br>The Everyday Diamond Edit</h2>
+            <p style="margin-bottom: 20px; font-size:13px; color:var(--brand-gold-light);">Dainty necklaces, rings, and earrings designed for daily elegance.</p>
+            <a href="diamond-jewellery.html" class="btn btn-white">Shop Now</a>
+          </div>
+        </div>
+        <!-- Slide 2 (Champagne Gold/Burgundy Background) -->
+        <div class="hero-slide" style="background-image: url('assets/images/hero-2.jpg'), linear-gradient(135deg, #C8A46A 0%, #4A102A 100%);">
+          <div class="hero-slide-content" style="background-color: rgba(74, 16, 42, 0.8);">
+            <h4>Aurelia Presents</h4>
+            <h2 style="font-family: var(--font-heading); font-style:italic;">Floral Bloom</h2>
+            <p style="margin-bottom: 20px; font-size:13px; color:var(--brand-gold-light);">Nature's grace translated in pure 22KT gold dual-texture collections.</p>
+            <a href="gold-jewellery.html" class="btn btn-white">Shop Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Hero Slide Indicators -->
+      <div class="hero-indicators">
+        <span class="hero-indicator active" onclick="document.getElementById('hero-slider').style.transform='translateX(0%)'; document.querySelectorAll('.hero-indicator').forEach(i=>i.classList.remove('active')); this.classList.add('active');"></span>
+        <span class="hero-indicator" onclick="document.getElementById('hero-slider').style.transform='translateX(-100%)'; document.querySelectorAll('.hero-indicator').forEach(i=>i.classList.remove('active')); this.classList.add('active');"></span>
+      </div>
+    </section>
+
+    <!-- 2. Collections Preview -->
+    <section class="section-spacer container">
+      <div class="section-title-wrapper">
+        <h2 class="section-title">Aurelia Collections</h2>
+        <p class="section-subtitle">Explore our newly launched collection</p>
+      </div>
+      <div class="collections-grid">
+        <div class="collection-card collection-card-large">
+          <img src="assets/images/collections/collection-1.jpg" alt="Diamond Necklace Collection" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'600\\\' height=\\\'800\\\'><rect width=\\\'600\\\' height=\\\'800\\\' fill=\\\'%230F4C43\\\'/></svg>'">
+          <div class="collection-card-content">
+            <h3>Solitaire Classics</h3>
+            <p style="margin-bottom:15px; font-size:13px;">Premium quality diamonds mounted on fine platinum and gold.</p>
+            <a href="solitaire-rings.html" class="btn btn-white" style="font-size:10px; padding:8px 20px;">Explore</a>
+          </div>
+        </div>
+        <div class="collection-card">
+          <img src="assets/images/collections/collection-2.jpg" alt="Earrings Collection" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'600\\\' height=\\\'400\\\'><rect width=\\\'600\\\' height=\\\'400\\\' fill=\\\'%23C39A57\\\'/></svg>'">
+          <div class="collection-card-content" style="background: linear-gradient(to top, rgba(74, 18, 18, 0.9) 0%, transparent 100%);">
+            <h3>Stunning every Ear</h3>
+            <p style="margin-bottom:15px; font-size:13px;">Studs, drops, and hoops crafted in traditional 22KT antique gold.</p>
+            <a href="earrings.html" class="btn btn-white" style="font-size:10px; padding:8px 20px;">Explore</a>
+          </div>
+        </div>
+        <div class="collection-card" style="background-color: var(--brand-teal-light);">
+          <img src="assets/images/collections/collection-3.jpg" alt="Gifting Ideas" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'600\\\' height=\\\'400\\\'><rect width=\\\'600\\\' height=\\\'400\\\' fill=\\\'%23072D27\\\'/></svg>'">
+          <div class="collection-card-content">
+            <h3>Bridal Elegance</h3>
+            <p style="margin-bottom:15px; font-size:13px;">Heritage choker sets and ornate bangles for the Indian bride.</p>
+            <a href="bridal-collection.html" class="btn btn-white" style="font-size:10px; padding:8px 20px;">Explore</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Find Your Perfect Match (Categories Grid) -->
+    <section class="section-spacer container">
+      <div class="section-title-wrapper">
+        <h2 class="section-title">Find Your Perfect Match</h2>
+        <p class="section-subtitle">Shop by Categories</p>
+      </div>
+      <div class="category-cards-grid">
+        <div class="category-card">
+          <a href="earrings.html">
+            <div class="category-card-img">
+              <img src="assets/images/categories/cat-earrings.jpg" alt="Earrings" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'300\\\' height=\\\'300\\\'><rect width=\\\'300\\\' height=\\\'300\\\' fill=\\\'%230F4C43\\\'/></svg>'">
+            </div>
+            <h4>Earrings</h4>
+          </a>
+        </div>
+        <div class="category-card">
+          <a href="rings.html">
+            <div class="category-card-img">
+              <img src="assets/images/categories/cat-rings.jpg" alt="Finger Rings" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'300\\\' height=\\\'300\\\'><rect width=\\\'300\\\' height=\\\'300\\\' fill=\\\'%230F4C43\\\'/></svg>'">
+            </div>
+            <h4>Finger Rings</h4>
+          </a>
+        </div>
+        <div class="category-card">
+          <a href="pendants.html">
+            <div class="category-card-img">
+              <img src="assets/images/categories/cat-pendants.jpg" alt="Pendants" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'300\\\' height=\\\'300\\\'><rect width=\\\'300\\\' height=\\\'300\\\' fill=\\\'%230F4C43\\\'/></svg>'">
+            </div>
+            <h4>Pendants</h4>
+          </a>
+        </div>
+        <div class="category-card">
+          <a href="mangalsutra.html">
+            <div class="category-card-img">
+              <img src="assets/images/categories/cat-mangalsutra.jpg" alt="Mangalsutra" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'300\\\' height=\\\'300\\\'><rect width=\\\'300\\\' height=\\\'300\\\' fill=\\\'%230F4C43\\\'/></svg>'">
+            </div>
+            <h4>Mangalsutra</h4>
+          </a>
+        </div>
+        <div class="category-card">
+          <a href="bracelets.html">
+            <div class="category-card-img">
+              <img src="assets/images/categories/cat-bracelets.jpg" alt="Bracelets" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'300\\\' height=\\\'300\\\'><rect width=\\\'300\\\' height=\\\'300\\\' fill=\\\'%230F4C43\\\'/></svg>'">
+            </div>
+            <h4>Bracelets</h4>
+          </a>
+        </div>
+        <div class="category-card">
+          <a href="bangles.html">
+            <div class="category-card-img">
+              <img src="assets/images/categories/cat-bangles.jpg" alt="Bangles" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'300\\\' height=\\\'300\\\'><rect width=\\\'300\\\' height=\\\'300\\\' fill=\\\'%230F4C43\\\'/></svg>'">
+            </div>
+            <h4>Bangles</h4>
+          </a>
+        </div>
+        <div class="category-card">
+          <a href="chains.html">
+            <div class="category-card-img">
+              <img src="assets/images/categories/cat-chains.jpg" alt="Chains" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'300\\\' height=\\\'300\\\'><rect width=\\\'300\\\' height=\\\'300\\\' fill=\\\'%230F4C43\\\'/></svg>'">
+            </div>
+            <h4>Chains</h4>
+          </a>
+        </div>
+        <div class="category-card">
+          <a href="collections.html">
+            <div class="category-card-img" style="background-color: var(--bg-white); border: 1px solid var(--border-light); display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 24px;">
+              <span style="font-family:var(--font-heading); font-size:42px; color:var(--brand-maroon); font-weight:700;">15+</span>
+              <p style="font-size:12px; color:var(--text-muted); margin-top:5px;">Product Categories to choose from</p>
+            </div>
+            <h4 style="color:var(--brand-maroon);">View All</h4>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Trending Now -->
+    <section class="section-spacer container">
+      <div class="section-title-wrapper">
+        <h2 class="section-title">Trending Now</h2>
+        <p class="section-subtitle">Jewellery pieces everyone's eyeing right now</p>
+      </div>
+      <div class="trending-cards-grid" id="trending-products-home">
+        <!-- Rendered dynamically by script.js from products dataset -->
+      </div>
+    </section>
+
+    <!-- 5. Tanishq World -->
+    <section class="section-spacer container">
+      <div class="section-title-wrapper">
+        <h2 class="section-title">Aurelia World</h2>
+        <p class="section-subtitle">A companion for every occasion</p>
+      </div>
+      <div class="collections-grid">
+        <div class="collection-card">
+          <img src="assets/images/world/world-wedding.jpg" alt="Wedding" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'600\\\' height=\\\'400\\\'><rect width=\\\'600\\\' height=\\\'400\\\' fill=\\\'%234A1212\\\'/></svg>'">
+          <div class="collection-card-content" style="background: linear-gradient(to top, rgba(74, 18, 18, 0.9) 0%, transparent 100%);">
+            <h3 style="font-size:28px; font-weight:500;">Wedding Jewellery</h3>
+            <a href="bridal-collection.html" class="btn btn-secondary" style="color:var(--text-light); border-color:var(--text-light); font-size:11px; padding:6px 16px;">View Wedding Guide</a>
+          </div>
+        </div>
+        <div class="collection-card">
+          <img src="assets/images/world/world-diamond.jpg" alt="Diamond" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'600\\\' height=\\\'400\\\'><rect width=\\\'600\\\' height=\\\'400\\\' fill=\\\'%230F4C43\\\'/></svg>'">
+          <div class="collection-card-content">
+            <h3 style="font-size:28px; font-weight:500;">Diamond Collectibles</h3>
+            <a href="diamond-jewellery.html" class="btn btn-secondary" style="color:var(--text-light); border-color:var(--text-light); font-size:11px; padding:6px 16px;">Explore Diamonds</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. New Arrivals Overlapping Section -->
+    <section class="new-arrivals-banner section-spacer">
+      <div class="new-arrivals-badge-pill">
+        💎 500+ New Items Added
+      </div>
+      <h2>New Arrivals</h2>
+      <p>New designs dropped daily. Experience fresh craftsmanship, modern silhouettes, and pure hallmarked gold.</p>
+      <a href="new-arrivals.html" class="btn btn-primary">Explore Latest Launches</a>
+    </section>
+    <div class="new-arrivals-cards-wrapper" id="new-arrivals-home">
+      <!-- Cards rendered dynamically and overlap the banner above using CSS offset margins -->
+    </div>
+
+    <!-- 7. Reels Slider Section (Styling 101 with Diamonds) -->
+    <section class="reels-section-wrapper">
+      <div class="section-title-wrapper">
+        <h2 class="section-title">Styling 101 With Diamonds</h2>
+        <p class="section-subtitle">Trendsetting diamond jewellery suited for every occasion</p>
+      </div>
+
+      <div class="reels-slider-viewport">
+        <button class="reels-nav-btn reels-nav-btn-prev" id="reels-prev">&lt;</button>
+        
+        <div class="reels-card-deck">
+          <!-- Card 1 -->
+          <div class="reel-card pos-left-far" style="background-image: url('assets/images/reels/reel-1.jpg'); background-color: var(--brand-teal);">
+            <div class="reel-card-overlay">
+              <div class="reel-card-header">
+                <h5>Earring Spa Guide</h5>
+                <span>🔊</span>
+              </div>
+              <span class="reel-card-play-btn">Play Reel</span>
+              <div class="reel-card-footer">
+                <img src="assets/images/products/earrings-1.jpg" alt="Dazzling Teardrop">
+                <div class="reel-card-footer-info">
+                  <h6>Dazzling Teardrop</h6>
+                  <p>Tap to View</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="reel-card pos-left" style="background-image: url('assets/images/reels/reel-2.jpg'); background-color: var(--brand-teal);">
+            <div class="reel-card-overlay">
+              <div class="reel-card-header">
+                <h5>Stacking Guide</h5>
+                <span>🔇</span>
+              </div>
+              <span class="reel-card-play-btn">Play Reel</span>
+              <div class="reel-card-footer">
+                <img src="assets/images/products/ring-1.jpg" alt="Rings Stack">
+                <div class="reel-card-footer-info">
+                  <h6>Eternity Band Suite</h6>
+                  <p>Tap to View</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 3 (Center Focus) -->
+          <div class="reel-card pos-center" style="background-image: url('assets/images/reels/reel-3.jpg'); background-color: var(--brand-teal);">
+            <div class="reel-card-overlay">
+              <div class="reel-card-header">
+                <h5>Bridal Styling</h5>
+                <span>🔊</span>
+              </div>
+              <span class="reel-card-play-btn">Play Reel</span>
+              <div class="reel-card-footer">
+                <img src="assets/images/products/necklace-1.jpg" alt="Bridal Choker">
+                <div class="reel-card-footer-info">
+                  <h6>Kundan Choker</h6>
+                  <p>Tap to View</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="reel-card pos-right" style="background-image: url('assets/images/reels/reel-4.jpg'); background-color: var(--brand-teal);">
+            <div class="reel-card-overlay">
+              <div class="reel-card-header">
+                <h5>Cleaning Guide</h5>
+                <span>🔇</span>
+              </div>
+              <span class="reel-card-play-btn">Play Reel</span>
+              <div class="reel-card-footer">
+                <img src="assets/images/products/bracelet-1.jpg" alt="Tennis Bracelet">
+                <div class="reel-card-footer-info">
+                  <h6>Gold Polish Care</h6>
+                  <p>Tap to View</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="reel-card pos-right-far" style="background-image: url('assets/images/reels/reel-5.jpg'); background-color: var(--brand-teal);">
+            <div class="reel-card-overlay">
+              <div class="reel-card-header">
+                <h5>Office Daily Look</h5>
+                <span>🔊</span>
+              </div>
+              <span class="reel-card-play-btn">Play Reel</span>
+              <div class="reel-card-footer">
+                <img src="assets/images/products/pendant-1.jpg" alt="Pendant">
+                <div class="reel-card-footer-info">
+                  <h6>Celeste Teardrop</h6>
+                  <p>Tap to View</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="reels-nav-btn reels-nav-btn-next" id="reels-next">&gt;</button>
+      </div>
+    </section>
+
+    <!-- 8. Aurelia Assurance -->
+    <section class="container">
+      <div class="assurance-split-box">
+        <div class="assurance-left-text">
+          <h2>Aurelia<br><span>Assurance</span></h2>
+          <p>Crafted by heritage artisans, cherished forever by you.</p>
+        </div>
+        <div class="assurance-divider"></div>
+        <div class="assurance-right-grid">
+          <div class="assurance-item">
+            <div class="assurance-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <h4>Quality Craftsmanship</h4>
+          </div>
+          <div class="assurance-item">
+            <div class="assurance-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+            <h4>Ethically Sourced</h4>
+          </div>
+          <div class="assurance-item">
+            <div class="assurance-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h4>100% Transparency</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Exchange Program Video Banner & Trust Badges -->
+    <section class="container">
+      <div class="exchange-video-banner">
+        <img src="assets/images/banners/exchange-banner.jpg" alt="Aurelia Exchange Video" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'1200\\\' height=\\\'550\\\'><rect width=\\\'1200\\\' height=\\\'550\\\' fill=\\\'%23072D27\\\'/></svg>'">
+        <div class="exchange-video-overlay">
+          <h3>Welcome to Aurelia's Exchange Program</h3>
+          <div class="play-icon-btn" onclick="alert('Playing program guide video...')">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <a href="exchange-program.html" class="btn btn-white">Explore Now</a>
+        </div>
+      </div>
+
+      <div class="exchange-tagline-banner">
+        <span class="exchange-tagline-text">
+          Trust us to be part of your precious moments and to deliver jewellery that you'll cherish forever.
+        </span>
+      </div>
+
+      <div class="trust-badges-row">
+        <div class="trust-badge-card">
+          <div class="trust-badge-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          </div>
+          <h4>Aurelia Exchange</h4>
+        </div>
+        <div class="trust-badge-card">
+          <div class="trust-badge-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h4>The Purity Guarantee (BIS)</h4>
+        </div>
+        <div class="trust-badge-card">
+          <div class="trust-badge-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </div>
+          <h4>Complete Transparency</h4>
+        </div>
+        <div class="trust-badge-card">
+          <div class="trust-badge-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>Lifetime Value Policy</h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Curated For You (Shop by Gender) -->
+    <section class="section-spacer container">
+      <div class="section-title-wrapper">
+        <h2 class="section-title">Curated For You</h2>
+        <p class="section-subtitle">Shop By Gender</p>
+      </div>
+      <div class="collections-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="collection-card" style="aspect-ratio: 0.9;">
+          <img src="assets/images/gender/women.jpg" alt="Women" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'400\\\' height=\\\'450\\\'><rect width=\\\'400\\\' height=\\\'450\\\' fill=\\\'%230F4C43\\\'/></svg>'">
+          <div class="collection-card-content">
+            <h3>Women</h3>
+            <a href="collections.html" class="btn btn-white" style="font-size:10px; padding:6px 16px;">Shop Women</a>
+          </div>
+        </div>
+        <div class="collection-card" style="aspect-ratio: 0.9;">
+          <img src="assets/images/gender/men.jpg" alt="Men" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'400\\\' height=\\\'450\\\'><rect width=\\\'400\\\' height=\\\'450\\\' fill=\\\'%23C39A57\\\'/></svg>'">
+          <div class="collection-card-content" style="background: linear-gradient(to top, rgba(74, 18, 18, 0.9) 0%, transparent 100%);">
+            <h3>Men</h3>
+            <a href="collections.html" class="btn btn-white" style="font-size:10px; padding:6px 16px;">Shop Men</a>
+          </div>
+        </div>
+        <div class="collection-card" style="aspect-ratio: 0.9;">
+          <img src="assets/images/gender/kids.jpg" alt="Kids" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'400\\\' height=\\\'450\\\'><rect width=\\\'400\\\' height=\\\'450\\\' fill=\\\'%23072D27\\\'/></svg>'">
+          <div class="collection-card-content">
+            <h3>Kids</h3>
+            <a href="collections.html" class="btn btn-white" style="font-size:10px; padding:6px 16px;">Shop Kids</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Aurelia Experience Grid -->
+    <section class="section-spacer container">
+      <div class="experience-frame-box">
+        <div class="section-title-wrapper" style="margin-bottom: 20px;">
+          <h2 class="section-title">Aurelia Experience</h2>
+          <p class="section-subtitle">Find a Boutique or Book a Consultation</p>
+        </div>
+        
+        <!-- Row 1: Boutique, Appointment, Expert -->
+        <div class="experience-grid-row">
+          <div class="experience-item-card">
+            <span class="experience-item-header">Visit Our Store</span>
+            <div class="experience-item-img">
+              <img src="assets/images/experience/exp-store.jpg" alt="Find Boutique" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'400\\\' height=\\\'280\\\'><rect width=\\\'400\\\' height=\\\'280\\\' fill=\\\'%230F4C43\\\'/></svg>'">
+            </div>
+            <a href="store-locator.html" class="experience-item-footer">Find Store</a>
+          </div>
+          <div class="experience-item-card">
+            <span class="experience-item-header">Book An Appointment</span>
+            <div class="experience-item-img">
+              <img src="assets/images/experience/exp-laptop.jpg" alt="Book Consultation" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'400\\\' height=\\\'280\\\'><rect width=\\\'400\\\' height=\\\'280\\\' fill=\\\'%23C39A57\\\'/></svg>'">
+            </div>
+            <a href="book-appointment.html" class="experience-item-footer">Book Appointment</a>
+          </div>
+          <div class="experience-item-card">
+            <span class="experience-item-header">Talk To An Expert</span>
+            <div class="experience-item-img">
+              <img src="assets/images/experience/exp-mobile.jpg" alt="Talk to Expert" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'400\\\' height=\\\'280\\\'><rect width=\\\'400\\\' height=\\\'280\\\' fill=\\\'%23072D27\\\'/></svg>'">
+            </div>
+            <a href="book-appointment.html" class="experience-item-footer">Talk To Expert</a>
+          </div>
+        </div>
+
+        <!-- Row 2: Digital Gold, Blogs, Guide -->
+        <div class="experience-grid-row" style="margin-top: 50px; border-top: 1px solid var(--border-light); padding-top: 40px;">
+          <div class="experience-item-card">
+            <div class="experience-item-img">
+              <img src="assets/images/experience/exp-digigold.jpg" alt="Digital Gold" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'400\\\' height=\\\'280\\\'><rect width=\\\'400\\\' height=\\\'280\\\' fill=\\\'%23072D27\\\'/></svg>'">
+            </div>
+            <a href="invest-in-gold.html" class="experience-item-footer">Digi Gold</a>
+          </div>
+          <div class="experience-item-card">
+            <div class="experience-item-img">
+              <img src="assets/images/experience/exp-blogs.jpg" alt="Read Blogs" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'400\\\' height=\\\'280\\\'><rect width=\\\'400\\\' height=\\\'280\\\' fill=\\\'%23C39A57\\\'/></svg>'">
+            </div>
+            <a href="blogs.html" class="experience-item-footer">Blogs</a>
+          </div>
+          <div class="experience-item-card">
+            <div class="experience-item-img">
+              <img src="assets/images/experience/exp-guide.jpg" alt="Jewellery Guide" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'400\\\' height=\\\'280\\\'><rect width=\\\'400\\\' height=\\\'280\\\' fill=\\\'%230F4C43\\\'/></svg>'">
+            </div>
+            <a href="diamond-guide.html" class="experience-item-footer">Jewellery Guide</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Dynamic Global Footer injected by script.js -->
+  <div id="footer-container"></div>
+
+  <script src="assets/data/products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

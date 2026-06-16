@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard | Aurelia Fine Jewellery</title>
+  <link rel="icon" type="image/png" href="assets/images/aurelia_logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="container">
+    <div class="section-spacer" style="max-width:800px; margin: 60px auto;">
+      <div class="section-title-wrapper" style="text-align:left; border-bottom:1px solid var(--border-light); padding-bottom:20px; margin-bottom:30px;">
+        <h1 class="section-title" style="font-size:48px;">My Dashboard</h1>
+        <p class="section-subtitle" style="font-size:18px; line-height:1.4; margin-top:10px; color:var(--brand-gold-dark); font-family:var(--font-heading); font-style:italic;">Manage your orders, profile, and digital gold portfolio</p>
+      </div>
+
+      <div style="font-size:15px; line-height:1.8; color:var(--text-dark);">
+        
+        <div style="display:grid; grid-template-columns: 200px 1fr; gap:40px;">
+          <aside style="border-right:1px solid var(--border-light); padding-right:20px;">
+            <ul style="display:flex; flex-direction:column; gap:16px; font-weight:600;">
+              <li><a href="my-account.html" style="color:var(--brand-maroon)">Overview</a></li>
+              <li><a href="my-orders.html">My Orders</a></li>
+              <li><a href="addresses.html">Address Book</a></li>
+              <li><a href="profile.html">Edit Profile</a></li>
+              <li><a href="invest-in-gold.html">Digital Gold Ledger</a></li>
+              <li><a href="login.html" style="color:#E25C5C;">Logout</a></li>
+            </ul>
+          </aside>
+          <div>
+            <h3>Welcome back, Vikram Malhotra!</h3>
+            <p style="color:var(--text-muted); margin-bottom:30px;">Aurelia Circle Tier: <strong>Gold Elite Club</strong></p>
+            <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:20px;">
+              <div style="border:1px solid var(--border-light); padding:20px; border-radius:var(--radius-md); text-align:center;">
+                <h5>Active Orders</h5>
+                <p style="font-size:28px; font-weight:700; color:var(--brand-maroon);">1</p>
+              </div>
+              <div style="border:1px solid var(--border-light); padding:20px; border-radius:var(--radius-md); text-align:center;">
+                <h5>Saved Designs</h5>
+                <p style="font-size:28px; font-weight:700; color:var(--brand-maroon);">4</p>
+              </div>
+              <div style="border:1px solid var(--border-light); padding:20px; border-radius:var(--radius-md); text-align:center;">
+                <h5>Digital Gold</h5>
+                <p style="font-size:28px; font-weight:700; color:var(--brand-teal);">1.45g</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="assets/data/products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
