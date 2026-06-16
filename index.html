@@ -20,7 +20,7 @@
         <div class="hero-slide active" style="background-image: url('assets/images/hero-1.jpg'), linear-gradient(135deg, #4A102A 0%, #5A1833 100%);">
           <div class="hero-slide-content">
             <h4>A TATA Enterprise</h4>
-            <h2>Under ₹30,000<br>The Everyday Diamond Edit</h2>
+            <h2>Everyday Diamond Collection</h2>
             <p style="margin-bottom: 20px; font-size:13px; color:var(--brand-gold-light);">Dainty necklaces, rings, and earrings designed for daily elegance.</p>
             <a href="diamond-jewellery.html" class="btn btn-white">Shop Now</a>
           </div>
@@ -29,16 +29,56 @@
         <div class="hero-slide" style="background-image: url('assets/images/hero-2.jpg'), linear-gradient(135deg, #C8A46A 0%, #4A102A 100%);">
           <div class="hero-slide-content" style="background-color: rgba(74, 16, 42, 0.8);">
             <h4>Aurelia Presents</h4>
-            <h2 style="font-family: var(--font-heading); font-style:italic;">Floral Bloom</h2>
-            <p style="margin-bottom: 20px; font-size:13px; color:var(--brand-gold-light);">Nature's grace translated in pure 22KT gold dual-texture collections.</p>
+            <h2 style="font-family: var(--font-heading); font-style:italic;">Wedding Collection</h2>
+            <p style="margin-bottom: 20px; font-size:13px; color:var(--brand-gold-light);">Exquisite bridal wedding jewellery crafted to make your special day memorable.</p>
+            <a href="bridal-collection.html" class="btn btn-white">Shop Now</a>
+          </div>
+        </div>
+        <!-- Slide 3 (Gold/Maroon Background) -->
+        <div class="hero-slide" style="background-image: url('assets/images/hero-3.jpg'), linear-gradient(135deg, #D9B77A 0%, #5A1833 100%);">
+          <div class="hero-slide-content" style="background-color: rgba(90, 24, 51, 0.8);">
+            <h4>Artisanal Masterpieces</h4>
+            <h2>Gold Jewellery Collection</h2>
+            <p style="margin-bottom: 20px; font-size:13px; color:var(--brand-gold-light);">Stunning heritage filigree and traditional gold designs for timeless elegance.</p>
             <a href="gold-jewellery.html" class="btn btn-white">Shop Now</a>
+          </div>
+        </div>
+        <!-- Slide 4 (Burgundy/Teal Background) -->
+        <div class="hero-slide" style="background-image: url('assets/images/hero-4.jpg'), linear-gradient(135deg, #4A102A 0%, #0F4C43 100%);">
+          <div class="hero-slide-content" style="background-color: rgba(15, 76, 67, 0.85);">
+            <h4>The Sovereign Bride</h4>
+            <h2>Bridal Collection</h2>
+            <p style="margin-bottom: 20px; font-size:13px; color:var(--brand-gold-light);">Opulent kundan choker sets, bangles and accessories for the modern Indian bride.</p>
+            <a href="bridal-collection.html" class="btn btn-white">Explore Bridal</a>
+          </div>
+        </div>
+        <!-- Slide 5 (Teal/Gold Background) -->
+        <div class="hero-slide" style="background-image: url('assets/images/hero-5.jpg'), linear-gradient(135deg, #0F4C43 0%, #C8A46A 100%);">
+          <div class="hero-slide-content" style="background-color: rgba(15, 76, 67, 0.8);">
+            <h4>Limited Edition</h4>
+            <h2>Signature Aurelia Collection</h2>
+            <p style="margin-bottom: 20px; font-size:13px; color:var(--brand-gold-light);">The pinnacle of premium luxury, handcrafted by heritage master craftsmen.</p>
+            <a href="collections.html" class="btn btn-white">Discover Signature</a>
+          </div>
+        </div>
+        <!-- Slide 6 (Maroon/Gold Background) -->
+        <div class="hero-slide" style="background-image: url('assets/images/hero-6.jpg'), linear-gradient(135deg, #5A1833 0%, #D9B77A 100%);">
+          <div class="hero-slide-content" style="background-color: rgba(90, 24, 51, 0.85);">
+            <h4>Celebration of Light</h4>
+            <h2>Festive Collection</h2>
+            <p style="margin-bottom: 20px; font-size:13px; color:var(--brand-gold-light);">Celebrate auspicious moments with our glittering gold and diamond creations.</p>
+            <a href="new-arrivals.html" class="btn btn-white">Shop Festive</a>
           </div>
         </div>
       </div>
       <!-- Hero Slide Indicators -->
       <div class="hero-indicators">
-        <span class="hero-indicator active" onclick="document.getElementById('hero-slider').style.transform='translateX(0%)'; document.querySelectorAll('.hero-indicator').forEach(i=>i.classList.remove('active')); this.classList.add('active');"></span>
-        <span class="hero-indicator" onclick="document.getElementById('hero-slider').style.transform='translateX(-100%)'; document.querySelectorAll('.hero-indicator').forEach(i=>i.classList.remove('active')); this.classList.add('active');"></span>
+        <span class="hero-indicator active" onclick="goToHeroSlide(0)"></span>
+        <span class="hero-indicator" onclick="goToHeroSlide(1)"></span>
+        <span class="hero-indicator" onclick="goToHeroSlide(2)"></span>
+        <span class="hero-indicator" onclick="goToHeroSlide(3)"></span>
+        <span class="hero-indicator" onclick="goToHeroSlide(4)"></span>
+        <span class="hero-indicator" onclick="goToHeroSlide(5)"></span>
       </div>
     </section>
 

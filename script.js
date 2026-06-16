@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 4. CONDITIONAL PAGE CONTROLLERS (Details, Category Listing, Checkout, etc.)
   routePageControllers();
+
+  // 5. HERO SLIDER AUTO-PLAY & CONTROLS
+  initHeroSlider();
 });
 
 // --- State Setup ---
@@ -1283,4 +1286,61 @@ function initCheckoutController() {
       gotoStep(prevStep);
     });
   });
+}
+
+// --- Hero Fade Slider Auto-play and Interactive Controllers ---
+let currentHeroSlide = 0;
+let heroSlideInterval = null;
+
+function initHeroSlider() {
+  const slides = document.querySelectorAll(".hero-slide");
+  const indicators = document.querySelectorAll(".hero-indicator");
+  if (slides.length === 0) return;
+
+  // Window-bound global function called by indicator onclick attributes
+  window.goToHeroSlide = function(index) {
+    currentHeroSlide = (index + slides.length) % slides.length;
+
+    slides.forEach((slide, idx) => {
+      if (idx === currentHeroSlide) {
+        slide.classList.add("active");
+      } else {
+        slide.classList.remove("active");
+      }
+    });
+
+    indicators.forEach((indicator, idx) => {
+      if (idx === currentHeroSlide) {
+        indicator.classList.add("active");
+      } else {
+        indicator.classList.remove("active");
+      }
+    });
+  };
+
+  // Autoplay control functions
+  const startAutoplay = () => {
+    stopAutoplay();
+    heroSlideInterval = setInterval(() => {
+      window.goToHeroSlide(currentHeroSlide + 1);
+    }, 4500); // Transitions every 4.5 seconds
+  };
+
+  const stopAutoplay = () => {
+    if (heroSlideInterval) {
+      clearInterval(heroSlideInterval);
+      heroSlideInterval = null;
+    }
+  };
+
+  // Hover pause and resume listeners
+  const container = document.querySelector(".hero-slider-container");
+  if (container) {
+    container.addEventListener("mouseenter", stopAutoplay);
+    container.addEventListener("mouseleave", startAutoplay);
+  }
+
+  // Initialize first slide and start auto-play
+  window.goToHeroSlide(0);
+  startAutoplay();
 }

@@ -194,7 +194,9 @@ header, #header-container {
   align-items: center;
   justify-content: space-between;
   height: 75px;
-  padding: 0 32px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
   background-color: #ffffff;
   width: 100%;
 }
@@ -364,9 +366,9 @@ header, #header-container {
   align-items: center;
   height: 100%;
   width: 100%;
-  max-width: 1250px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 24px;
 }
 
 .category-nav-item {
@@ -1230,22 +1232,33 @@ header, #header-container {
 }
 
 .hero-slider {
-  display: flex;
+  position: relative;
   height: 100%;
   width: 100%;
-  transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .hero-slide {
-  flex: 0 0 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  position: relative;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   padding: 0 10%;
   background-size: cover;
   background-position: center;
+  z-index: 1;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
 }
 
 .hero-slide::after {
@@ -2582,6 +2595,9 @@ main {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
   .header-main {
     padding: 0 16px;
     height: 70px;
