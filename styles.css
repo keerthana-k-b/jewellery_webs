@@ -210,6 +210,7 @@ header, #header-container {
   box-shadow: none !important;
   margin: 0 !important;
   padding: 0 !important;
+  flex: 1 1 0%;
 }
 
 .header-logo a {
@@ -302,6 +303,8 @@ header, #header-container {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex: 1 1 0%;
+  justify-content: flex-end;
 }
 
 .header-icon-link {
@@ -1467,10 +1470,20 @@ header, #header-container {
   z-index: 2;
 }
 
+@keyframes reelFloat {
+  0%, 100% {
+    transform: translateX(0) translateZ(0) rotateY(0) translateY(0);
+  }
+  50% {
+    transform: translateX(0) translateZ(0) rotateY(0) translateY(-10px);
+  }
+}
+
 .reel-card.pos-center {
   transform: translateX(0) translateZ(0) rotateY(0);
   opacity: 1;
   z-index: 3;
+  animation: reelFloat 4s ease-in-out infinite;
 }
 
 .reel-card.pos-right {
@@ -2571,7 +2584,7 @@ main {
 }
 
 .section-spacer {
-  margin: 80px 0;
+  margin: 80px auto;
 }
 
 /* Responsive Styles */
@@ -2602,8 +2615,42 @@ main {
     padding: 0 16px;
     height: 70px;
   }
-  .search-bar-wrapper {
-    display: none; /* Collapses into search icon trigger */
+  .header-search-wrapper {
+    display: none !important; /* Collapses into search icon trigger */
+  }
+
+  /* Reels horizontal translation scale-down */
+  .reel-card.pos-left-far {
+    transform: translateX(-120px) translateZ(-150px) rotateY(25deg);
+    opacity: 0.2;
+  }
+  .reel-card.pos-left {
+    transform: translateX(-60px) translateZ(-80px) rotateY(15deg);
+    opacity: 0.5;
+  }
+  .reel-card.pos-right {
+    transform: translateX(60px) translateZ(-80px) rotateY(-15deg);
+    opacity: 0.5;
+  }
+  .reel-card.pos-right-far {
+    transform: translateX(120px) translateZ(-150px) rotateY(-25deg);
+    opacity: 0.2;
+  }
+
+  /* Details tabs overlap fix */
+  .tabs-nav {
+    gap: 16px;
+  }
+  .tab-nav-btn {
+    font-size: 16px;
+    padding-bottom: 8px;
+  }
+
+  /* Experience section spacing fix on mobile */
+  .experience-grid-row {
+    margin-top: 30px !important;
+    border-top: none !important;
+    padding-top: 0 !important;
   }
   .category-nav {
     overflow-x: auto;

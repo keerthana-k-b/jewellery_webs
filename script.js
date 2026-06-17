@@ -1058,6 +1058,24 @@ function renderGridProducts(containerId, list, isLarge = false) {
   `).join("");
 }
 
+// Get product images with priority: 1. prod.gallery, 2. prod.images, 3. prod.alternates, 4. prod.image
+function getProductImages(prod) {
+  let list = [];
+  if (prod.gallery && Array.isArray(prod.gallery) && prod.gallery.length > 0) {
+    list = [...prod.gallery];
+  } else if (prod.images && Array.isArray(prod.images) && prod.images.length > 0) {
+    list = [...prod.images];
+  } else if (prod.alternates && Array.isArray(prod.alternates) && prod.alternates.length > 0) {
+    list = [...prod.alternates];
+  }
+  
+  // Strict priority fallback: duplicate product's own main image
+  while (list.length < 3) {
+    list.push(prod.image);
+  }
+  return list.slice(0, 3);
+}
+
 // --- Product Details Page Controller ---
 function initProductDetailsController() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -1084,7 +1102,27 @@ function initProductDetailsController() {
   document.getElementById("det-reviews-count").textContent = `(${prod.reviewsCount || 0} customer reviews)`;
 
   const mainImg = document.getElementById("det-main-img");
-  mainImg.src = prod.image;
+  if (mainImg) {
+    mainImg.src = prod.image;
+    mainImg.alt = prod.name;
+    mainImg.onerror = function() {
+      console.warn("Main product image missing on disk: " + prod.image);
+    };
+  }
+
+  // Populate thumbnails with strict file existence checks and onerror logging
+  const productImages = getProductImages(prod);
+  const thumbnails = document.querySelectorAll(".thumbnail-img");
+  thumbnails.forEach((thumb, idx) => {
+    const imgUrl = productImages[idx] || prod.image;
+    thumb.src = imgUrl;
+    thumb.alt = `${prod.name} - View ${idx + 1}`;
+    thumb.onerror = function() {
+      console.warn("Missing thumbnail image file on disk, falling back to main image: " + imgUrl);
+      this.src = prod.image;
+      this.onerror = null; // Prevent infinite loop
+    };
+  });
 
   // Add event for buy
   const buyBtn = document.getElementById("det-buy-btn");
@@ -1097,12 +1135,11 @@ function initProductDetailsController() {
   }
 
   // Thumbnails event binding
-  const thumbnails = document.querySelectorAll(".thumbnail-img");
   thumbnails.forEach(thumb => {
     thumb.addEventListener("click", () => {
       thumbnails.forEach(t => t.classList.remove("active"));
       thumb.classList.add("active");
-      mainImg.src = thumb.src;
+      if (mainImg) mainImg.src = thumb.src;
     });
   });
 
@@ -1223,6 +1260,7 @@ function initReelsSlider() {
   if (cards.length === 0) return;
 
   let positions = ["pos-left-far", "pos-left", "pos-center", "pos-right", "pos-right-far"];
+  let autoplayInterval = null;
   
   const updateCardPositions = () => {
     cards.forEach((card, idx) => {
@@ -1231,11 +1269,29 @@ function initReelsSlider() {
     });
   };
 
+  // Autoplay function
+  const startAutoplay = () => {
+    stopAutoplay();
+    autoplayInterval = setInterval(() => {
+      const first = positions.shift();
+      positions.push(first);
+      updateCardPositions();
+    }, 3500); // Auto-rotate every 3.5 seconds
+  };
+
+  const stopAutoplay = () => {
+    if (autoplayInterval) {
+      clearInterval(autoplayInterval);
+      autoplayInterval = null;
+    }
+  };
+
   if (prevBtn) {
     prevBtn.addEventListener("click", () => {
       const last = positions.pop();
       positions.unshift(last);
       updateCardPositions();
+      startAutoplay(); // Reset autoplay timer
     });
   }
 
@@ -1244,10 +1300,44 @@ function initReelsSlider() {
       const first = positions.shift();
       positions.push(first);
       updateCardPositions();
+      startAutoplay(); // Reset autoplay timer
     });
   }
 
+  // Hover pause support
+  const viewport = document.getElementById("reels-slider-viewport") || document.querySelector(".reels-slider-viewport");
+  if (viewport) {
+    viewport.addEventListener("mouseenter", stopAutoplay);
+    viewport.addEventListener("mouseleave", startAutoplay);
+
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    viewport.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    viewport.addEventListener("touchend", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const swipeThreshold = 50;
+      if (touchEndX < touchStartX - swipeThreshold) {
+        // Swipe left -> Next slide
+        const first = positions.shift();
+        positions.push(first);
+        updateCardPositions();
+        startAutoplay();
+      } else if (touchEndX > touchStartX + swipeThreshold) {
+        // Swipe right -> Prev slide
+        const last = positions.pop();
+        positions.unshift(last);
+        updateCardPositions();
+        startAutoplay();
+      }
+    }, { passive: true });
+  }
+
   updateCardPositions();
+  startAutoplay(); // Start auto rotation
 }
 
 // --- Multi-step Checkout Controller ---
