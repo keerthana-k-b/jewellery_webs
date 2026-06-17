@@ -24,7 +24,7 @@ def get_category_page_html(title, category, subcategory=None, material=None):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title} | Aurelia Fine Jewellery</title>
   <link rel="icon" type="image/png" href="assets/images/aurelia_logo.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=1.1">
 </head>
 <body>
 
@@ -134,7 +134,7 @@ def get_product_details_html():
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jewellery Details | Aurelia Fine Jewellery</title>
   <link rel="icon" type="image/png" href="assets/images/aurelia_logo.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=1.1">
 </head>
 <body>
 
@@ -252,7 +252,7 @@ def get_cart_html():
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Bag | Aurelia Fine Jewellery</title>
   <link rel="icon" type="image/png" href="assets/images/aurelia_logo.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=1.1">
 </head>
 <body>
   <div id="header-container"></div>
@@ -382,7 +382,7 @@ def get_wishlist_html():
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Wishlist | Aurelia Fine Jewellery</title>
   <link rel="icon" type="image/png" href="assets/images/aurelia_logo.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=1.1">
 </head>
 <body>
   <div id="header-container"></div>
@@ -478,7 +478,7 @@ def get_checkout_html():
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Secure Checkout | Aurelia Fine Jewellery</title>
   <link rel="icon" type="image/png" href="assets/images/aurelia_logo.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=1.1">
 </head>
 <body>
   <div id="header-container"></div>
@@ -650,7 +650,7 @@ def get_mock_page_html(title, desc_headline, content_body):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title} | Aurelia Fine Jewellery</title>
   <link rel="icon" type="image/png" href="assets/images/aurelia_logo.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=1.1">
 </head>
 <body>
   <div id="header-container"></div>

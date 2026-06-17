@@ -885,7 +885,7 @@ function routePageControllers() {
   if (document.getElementById("checkout-root")) {
     initCheckoutController();
   }
-  if (document.getElementById("reels-slider-viewport")) {
+  if (document.getElementById("reels-slider-viewport") || document.querySelector(".reels-slider-viewport")) {
     initReelsSlider();
   }
   
