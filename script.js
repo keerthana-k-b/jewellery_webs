@@ -162,11 +162,11 @@ function getHeaderHTML() {
 
       <div class="header-search-wrapper" id="search-bar-trigger">
         <div class="header-search-inner">
-          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="text" placeholder="Search for engagement rings" id="global-search-input" readonly>
           <div class="search-icons-right">
-            <svg viewBox="0 0 24 24" title="Search by Image"><path d="M9 12c0-1.66 1.34-3 3-3s3 1.34 3 3-1.34 3-3 3-3-1.34-3-3zm12-7.03V19c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V4.97c0-1.1.9-2 2-2h3.17L10 1h4l1.83 1.97H19c1.1 0 2 .9 2 2zM12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-            <svg viewBox="0 0 24 24" title="Voice Search"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" title="Search by Image"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" title="Voice Search"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
           </div>
         </div>
       </div>
@@ -174,24 +174,24 @@ function getHeaderHTML() {
       <div class="header-icons">
         <!-- Mobile search trigger -->
         <button class="mobile-search-btn" id="mobile-search-trigger" aria-label="Search" title="Search">
-          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </button>
 
         <a href="collections.html" class="header-icon-link" title="Diamond">
-          <svg viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 12L2 9z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M2 9h20M8 3l4 6 4-6" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M11 3L8 9M13 3l3 6M2 9h20M12 21L8 9M12 21l4-12"/></svg>
         </a>
         <a href="store-locator.html" class="header-icon-link" title="Stores">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </a>
         <div class="header-icon-link" id="wishlist-drawer-trigger" title="Wishlist">
-          <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           <span class="counter wishlist-count-badge">0</span>
         </div>
         <a href="my-account.html" class="header-icon-link" title="My Account">
-          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </a>
         <div class="header-icon-link" id="cart-drawer-trigger" title="Shopping Cart">
-          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
           <span class="counter cart-count-badge">0</span>
         </div>
       </div>
@@ -201,70 +201,120 @@ function getHeaderHTML() {
       <ul class="category-nav-list">
         <li class="category-nav-item">
           <a href="collections.html" class="category-nav-link">
-            <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.8 2.3 7.3-6.3-4.7-6.3 4.7 2.3-7.3-6-4.8h7.6L12 2z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+            <!-- All Jewellery: sparkle/grid icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l1.5 4.5H18l-3.5 2.8 1.3 4.7-4.8-3.3-4.8 3.3 1.3-4.7L4 6.5h4.5L12 2z"/>
+            </svg>
             <span>All Jewellery</span>
           </a>
           ${getMegaMenuHTML("all")}
         </li>
         <li class="category-nav-item">
           <a href="gold-jewellery.html" class="category-nav-link">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M12 2v3M9.5 3.5l1.5 1.5M14.5 3.5L13 5" stroke="currentColor" stroke-width="1.2"/></svg>
+            <!-- Gold: sun/glow icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
             <span>Gold</span>
           </a>
           ${getMegaMenuHTML("gold")}
         </li>
         <li class="category-nav-item">
           <a href="diamond-jewellery.html" class="category-nav-link">
-            <svg viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2zm0 3.5l6.5 6.5-6.5 6.5-6.5-6.5L12 5.5z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+            <!-- Diamond: gem shape -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 3h12l4 6-10 12L2 9z"/>
+              <path d="M11 3L8 9M13 3l3 6M2 9h20"/>
+            </svg>
             <span>Diamond</span>
           </a>
           ${getMegaMenuHTML("diamond")}
         </li>
         <li class="category-nav-item">
           <a href="earrings.html" class="category-nav-link">
-            <svg viewBox="0 0 24 24"><path d="M8 5c0 3 2 5 2 7s-1 3-1 5 1 2 2 2 2-1 2-2-1-3-1-5 2-4 2-7c0-2-1.5-3-2-3s-2 1-2 3z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+            <!-- Earrings: drop/teardrop -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="6" r="2"/>
+              <path d="M9 8v4"/>
+              <ellipse cx="9" cy="15" rx="3" ry="4"/>
+              <circle cx="15" cy="6" r="2"/>
+              <path d="M15 8v4"/>
+              <ellipse cx="15" cy="15" rx="3" ry="4"/>
+            </svg>
             <span>Earrings</span>
           </a>
           ${getMegaMenuHTML("earrings")}
         </li>
         <li class="category-nav-item">
           <a href="rings.html" class="category-nav-link">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="14" r="6" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M12 8l-2-3h4l-2 3z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+            <!-- Ring: circle with gem -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="14" r="7"/>
+              <path d="M9 14a3 3 0 0 1 6 0"/>
+              <path d="M9.5 7.5l-1-3.5h7l-1 3.5"/>
+            </svg>
             <span>Rings</span>
           </a>
           ${getMegaMenuHTML("rings")}
         </li>
         <li class="category-nav-item">
           <a href="trending-now.html" class="category-nav-link">
-            <svg viewBox="0 0 24 24"><path d="M17 8c-3.11 0-7 2.89-7 7 0 2 1.5 3 3 3 2.11 0 7-4.89 7-9 0-1.5-1.5-1-3-1zm-6-2C8.11 6 5 8.89 5 13c0 2 1.5 3 3 3 2.11 0 5-4.89 5-9 0-1.5-1.5-1-3-1z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+            <!-- Daily Wear: repeat/infinity loop -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 2l4 4-4 4"/>
+              <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+              <path d="M7 22l-4-4 4-4"/>
+              <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+            </svg>
             <span>Daily Wear</span>
           </a>
           ${getMegaMenuHTML("all")}
         </li>
         <li class="category-nav-item">
           <a href="gold-jewellery.html" class="category-nav-link">
-            <svg viewBox="0 0 24 24"><path d="M16 2H8L3 8l9 14 9-14-5-6zM12 5.2l3 3.6H9l3-3.6z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+            <!-- Gemstone: gem facets -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 2H8L3 8l9 13 9-13-5-6z"/>
+              <path d="M3 8h18M8 2l4 6M16 2l-4 6"/>
+            </svg>
             <span>Gemstone</span>
           </a>
           ${getMegaMenuHTML("all")}
         </li>
         <li class="category-nav-item">
           <a href="bridal-collection.html" class="category-nav-link">
-            <svg viewBox="0 0 24 24"><path d="M2 22h20v-2H2v2zm0-4l3-8 5 4 4-6 4 6 5-4v10H2z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+            <!-- Wedding: two interlocked rings -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="13" r="5"/>
+              <circle cx="15" cy="13" r="5"/>
+              <path d="M9 8V5M15 8V5"/>
+            </svg>
             <span>Wedding</span>
           </a>
           ${getMegaMenuHTML("gold")}
         </li>
         <li class="category-nav-item">
           <a href="gifting.html" class="category-nav-link">
-            <svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M12 9V3M7.5 5.5S10 3 12 5.5M16.5 5.5S14 3 12 5.5M3 9h18" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+            <!-- Gifting: box with bow -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="9" width="18" height="12" rx="2"/>
+              <path d="M12 9V21M3 13h18"/>
+              <path d="M8 9c0-2 1.5-4 4-4s4 2 4 4"/>
+              <path d="M8 9c-2 0-4-1-4-3s2-3 4-1M16 9c2 0 4-1 4-3s-2-3-4-1"/>
+            </svg>
             <span>Gifting</span>
           </a>
           ${getMegaMenuHTML("gifting")}
         </li>
         <li class="category-nav-item">
           <a href="assurance.html" class="category-nav-link">
-            <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="19" cy="12" r="2" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+            <!-- More: three dots horizontal -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="5" cy="12" r="1.5" fill="currentColor"/>
+              <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+              <circle cx="19" cy="12" r="1.5" fill="currentColor"/>
+            </svg>
             <span>More</span>
           </a>
           ${getMegaMenuHTML("more")}
@@ -371,7 +421,7 @@ function getMegaMenuHTML(type) {
       <div class="mega-menu-column">
         <h4>Trust & Guides</h4>
         <ul>
-          <li><a href="assurance.html">Tanishq Assurance</a></li>
+          <li><a href="assurance.html">Aurelia Assurance</a></li>
           <li><a href="exchange-program.html">Lifetime Exchange Program</a></li>
           <li><a href="diamond-guide.html">4Cs Diamond Education Guide</a></li>
           <li><a href="craftsmanship.html">The Karigar Artistry</a></li>
@@ -475,11 +525,11 @@ function getSearchOverlayHTML() {
         <div class="search-overlay-inner">
           <div class="search-overlay-input-wrap-new">
             <div class="search-pill-box">
-              <svg class="search-icon-left" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              <svg class="search-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
               <input type="text" placeholder="Search for engagement rings" id="search-overlay-input" autofocus>
               <div class="search-icons-right">
-                <svg viewBox="0 0 24 24" title="Search by Image"><path d="M9 12c0-1.66 1.34-3 3-3s3 1.34 3 3-1.34 3-3 3-3-1.34-3-3zm12-7.03V19c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V4.97c0-1.1.9-2 2-2h3.17L10 1h4l1.83 1.97H19c1.1 0 2 .9 2 2zM12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/></svg>
-                <svg viewBox="0 0 24 24" title="Voice Search"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" title="Search by Image"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" title="Voice Search"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
               </div>
             </div>
             <span class="search-overlay-close-btn-new" id="search-overlay-close-btn">&times;</span>
@@ -1600,6 +1650,24 @@ function initHeroSlider() {
         indicator.classList.remove("active");
       }
     });
+
+    // Translate the slider track
+    // Slides are flex:0 0 100% of .hero-slider-container, so slideW == containerW.
+    // The peek effect comes from .hero-carousel-outer padding (80px desktop).
+    // translateX(0) shows slide 0 filling the container; adjacent slides are in peek lanes.
+    const sliderTrack = document.getElementById("hero-slider");
+    const sliderContainer = document.querySelector(".hero-slider-container");
+    if (sliderTrack && sliderContainer) {
+      const slideW = sliderContainer.offsetWidth; // slide == container width (flex:0 0 100%)
+      // CSS gap values matching breakpoints
+      let gap = 16;
+      if (window.innerWidth <= 1024) gap = 12;
+      if (window.innerWidth <= 768)  gap = 12;
+      if (window.innerWidth <= 425)  gap = 10;
+
+      const offset = -currentHeroSlide * (slideW + gap);
+      sliderTrack.style.transform = `translateX(${offset}px)`;
+    }
   };
 
   // Autoplay control functions
@@ -1653,4 +1721,9 @@ function initHeroSlider() {
   // Initialize first slide and start auto-play
   window.goToHeroSlide(0);
   startAutoplay();
+
+  // Resize listener to re-evaluate transform
+  window.addEventListener("resize", () => {
+    window.goToHeroSlide(window._currentHeroSlide);
+  });
 }
