@@ -1618,63 +1618,108 @@ function initCheckoutController() {
   });
 }
 
-// --- Hero Fade Slider Auto-play and Interactive Controllers ---
-let currentHeroSlide = 0;
+
+// --- Hero Banner Slider — Flat Infinite Loop (Premium Ecommerce) ---
 let heroSlideInterval = null;
 
 function initHeroSlider() {
-  const slides = document.querySelectorAll(".hero-slide");
+  const outer = document.querySelector(".hero-carousel-outer");
+  const track = document.getElementById("hero-slider");
+  const container = document.querySelector(".hero-slider-container");
   const indicators = document.querySelectorAll(".hero-indicator");
-  if (slides.length === 0) return;
 
-  // Expose current slide index for arrow buttons in HTML
+  if (!track || !container) return;
+
+  const realSlides = Array.from(track.querySelectorAll(".hero-slide"));
+  const total = realSlides.length;
+  if (total === 0) return;
+
+  // --- Clone first and last slides for seamless infinite wrap ---
+  const firstClone = realSlides[0].cloneNode(true);
+  const lastClone  = realSlides[total - 1].cloneNode(true);
+  firstClone.classList.add("hero-clone");
+  firstClone.classList.remove("active");
+  lastClone.classList.add("hero-clone");
+  lastClone.classList.remove("active");
+
+  track.appendChild(firstClone);   // clone of slide 1 at the end
+  track.insertBefore(lastClone, realSlides[0]); // clone of last slide at start
+
+  // All slides including clones
+  const allSlides = Array.from(track.querySelectorAll(".hero-slide"));
+  // Real slides are at positions 1 ... total  (0 = lastClone, total+1 = firstClone)
+  let currentIndex = 1; // start at the first real slide (index 1)
+
+  // Expose global slide index (used by indicator onclick)
   window._currentHeroSlide = 0;
 
-  // Window-bound global function called by indicator onclick attributes and arrow btns
-  window.goToHeroSlide = function(index) {
-    currentHeroSlide = ((index % slides.length) + slides.length) % slides.length;
-    window._currentHeroSlide = currentHeroSlide;
+  // --- Core slide positioning ---
+  function getSlideWidth() {
+    // Each slide = 100% of container width; gap comes from CSS flex gap
+    const gap = getComputedGap();
+    return container.offsetWidth + gap;
+  }
 
-    slides.forEach((slide, idx) => {
-      if (idx === currentHeroSlide) {
-        slide.classList.add("active");
-      } else {
-        slide.classList.remove("active");
-      }
-    });
+  function getComputedGap() {
+    if (window.innerWidth <= 600) return 0;
+    if (window.innerWidth <= 900) return 10;
+    return 16;
+  }
 
-    indicators.forEach((indicator, idx) => {
-      if (idx === currentHeroSlide) {
-        indicator.classList.add("active");
-      } else {
-        indicator.classList.remove("active");
-      }
-    });
-
-    // Translate the slider track
-    // Slides are flex:0 0 100% of .hero-slider-container, so slideW == containerW.
-    // The peek effect comes from .hero-carousel-outer padding (80px desktop).
-    // translateX(0) shows slide 0 filling the container; adjacent slides are in peek lanes.
-    const sliderTrack = document.getElementById("hero-slider");
-    const sliderContainer = document.querySelector(".hero-slider-container");
-    if (sliderTrack && sliderContainer) {
-      const slideW = sliderContainer.offsetWidth; // slide == container width (flex:0 0 100%)
-      // CSS gap values matching breakpoints
-      let gap = 16;
-      if (window.innerWidth <= 1024) gap = 12;
-      if (window.innerWidth <= 768)  gap = 12;
-      if (window.innerWidth <= 425)  gap = 10;
-
-      const offset = -currentHeroSlide * (slideW + gap);
-      sliderTrack.style.transform = `translateX(${offset}px)`;
+  function slideTo(index, animate) {
+    const slideW = getSlideWidth();
+    const offset = -index * slideW;
+    if (animate) {
+      track.style.transition = "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)";
+    } else {
+      track.style.transition = "none";
     }
+    track.style.transform = `translateX(${offset}px)`;
+  }
+
+  function updateActiveClasses() {
+    // Real slide index (0-based) corresponding to currentIndex in allSlides
+    const realIdx = currentIndex - 1; // currentIndex 1 = real slide 0
+    window._currentHeroSlide = realIdx;
+
+    allSlides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === currentIndex);
+    });
+
+    indicators.forEach((dot, i) => {
+      dot.classList.toggle("active", i === realIdx);
+    });
+  }
+
+  // --- Infinite loop: after transition, silently jump to real slide ---
+  track.addEventListener("transitionend", () => {
+    if (currentIndex === 0) {
+      // Was at lastClone — jump to last real slide
+      currentIndex = total;
+      slideTo(currentIndex, false);
+    } else if (currentIndex === total + 1) {
+      // Was at firstClone — jump to first real slide
+      currentIndex = 1;
+      slideTo(currentIndex, false);
+    }
+  });
+
+  // --- Global goToHeroSlide (called by indicator and arrow onclick) ---
+  window.goToHeroSlide = function(realIdx) {
+    // realIdx is 0-based real slide index
+    const clamped = ((realIdx % total) + total) % total;
+    currentIndex = clamped + 1;
+    slideTo(currentIndex, true);
+    updateActiveClasses();
   };
 
-  // Autoplay control functions
+  // --- Autoplay ---
   const startAutoplay = () => {
     stopAutoplay();
     heroSlideInterval = setInterval(() => {
-      window.goToHeroSlide(currentHeroSlide + 1);
+      currentIndex++;
+      slideTo(currentIndex, true);
+      updateActiveClasses();
     }, 4500);
   };
 
@@ -1685,45 +1730,48 @@ function initHeroSlider() {
     }
   };
 
-  // Hover pause and resume listeners
-  const container = document.querySelector(".hero-slider-container");
-  if (container) {
-    container.addEventListener("mouseenter", stopAutoplay);
-    container.addEventListener("mouseleave", startAutoplay);
+  // --- Pause on hover ---
+  container.addEventListener("mouseenter", stopAutoplay);
+  container.addEventListener("mouseleave", startAutoplay);
 
-    // Touch swipe support for hero slider
-    let heroTouchStartX = 0;
-    let heroTouchStartY = 0;
+  // --- Touch swipe support ---
+  let touchStartX = 0;
+  let touchStartY = 0;
 
-    container.addEventListener("touchstart", (e) => {
-      heroTouchStartX = e.changedTouches[0].clientX;
-      heroTouchStartY = e.changedTouches[0].clientY;
-    }, { passive: true });
+  container.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }, { passive: true });
 
-    container.addEventListener("touchend", (e) => {
-      const dx = e.changedTouches[0].clientX - heroTouchStartX;
-      const dy = e.changedTouches[0].clientY - heroTouchStartY;
-      const threshold = 50;
-      // Only handle horizontal swipes
-      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > threshold) {
-        if (dx < 0) {
-          // Swipe left -> next slide
-          window.goToHeroSlide(currentHeroSlide + 1);
-        } else {
-          // Swipe right -> prev slide
-          window.goToHeroSlide(currentHeroSlide - 1);
-        }
-        startAutoplay();
+  container.addEventListener("touchend", (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      stopAutoplay();
+      if (dx < 0) {
+        currentIndex++;
+      } else {
+        currentIndex--;
       }
-    }, { passive: true });
-  }
+      slideTo(currentIndex, true);
+      updateActiveClasses();
+      startAutoplay();
+    }
+  }, { passive: true });
 
-  // Initialize first slide and start auto-play
-  window.goToHeroSlide(0);
-  startAutoplay();
-
-  // Resize listener to re-evaluate transform
+  // --- Recalculate on resize ---
   window.addEventListener("resize", () => {
-    window.goToHeroSlide(window._currentHeroSlide);
+    slideTo(currentIndex, false);
   });
+
+  // --- Initialize: position without animation, then reveal ---
+  slideTo(currentIndex, false);
+  updateActiveClasses();
+
+  // Reveal the carousel (removes opacity:0)
+  requestAnimationFrame(() => {
+    if (outer) outer.classList.add("is-ready");
+  });
+
+  startAutoplay();
 }

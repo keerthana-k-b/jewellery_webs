@@ -94,16 +94,15 @@
           </div>
 
         </div>
-
-        <!-- Hero prev/next nav arrows (inside container for vertical centering) -->
-        <button class="hero-nav-btn hero-nav-prev" onclick="goToHeroSlide(window._currentHeroSlide - 1)" aria-label="Previous slide">
-          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-        </button>
-        <button class="hero-nav-btn hero-nav-next" onclick="goToHeroSlide(window._currentHeroSlide + 1)" aria-label="Next slide">
-          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-        </button>
-
       </section>
+
+      <!-- Hero prev/next nav arrows: positioned on .hero-carousel-outer (position:relative) -->
+      <button class="hero-nav-btn hero-nav-prev" onclick="goToHeroSlide(window._currentHeroSlide - 1)" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </button>
+      <button class="hero-nav-btn hero-nav-next" onclick="goToHeroSlide(window._currentHeroSlide + 1)" aria-label="Next slide">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </button>
 
       <!-- Hero Slide Indicators – below the slide track -->
       <div class="hero-indicators">

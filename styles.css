@@ -1444,76 +1444,78 @@ header, #header-container {
 }
 
 /* ==============================================
-   HERO CAROUSEL — LUXURY ECOMMERCE PRESENTATION
-   Active slide: 82% width, centred
-   Adjacent slides: peek ~80px each side visible
-   Image: object-fit:contain — no crop / no zoom
+   HERO BANNER SLIDER — PREMIUM ECOMMERCE STYLE
+   Active slide: 88% viewport width, centred
+   Adjacent slides: ~6% edge peek each side
+   Flat slider — NO scale / perspective / 3D
    ============================================== */
 
-/* Outer wrapper: sets max-width, creates peek lanes via horizontal padding,
-   and clips everything outside with overflow:hidden */
+/* Outer wrapper: full width, clips overflow, no large side padding */
 .hero-carousel-outer {
   width: 100%;
-  max-width: var(--max-width);
   margin: 20px auto 0;
-  /* Peek lane = 80px on each side; outer hides everything beyond */
-  padding: 0 80px;
-  box-sizing: border-box;
   overflow: hidden;
-  position: relative; /* needed for absolutely positioned arrows */
+  position: relative;
+  box-sizing: border-box;
+  /* Hidden until JS initializes to prevent first-load flash */
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* Container: aspect-ratio drives height — no fixed px heights */
+/* Ready state: JS adds this class after first slide is positioned */
+.hero-carousel-outer.is-ready {
+  opacity: 1;
+}
+
+/* Scrollable track wrapper — controls the visible viewport area */
 .hero-slider-container {
   position: relative;
-  width: 100%;
-  aspect-ratio: 2.4 / 1;
-  overflow: visible; /* slides can peek out of this box */
+  width: 88%;          /* Active slide occupies 88% — 6% peek each side */
+  margin: 0 auto;
+  aspect-ratio: 2.5 / 1;
+  overflow: visible;   /* Let adjacent slides peek from sides */
   background-color: transparent;
 }
 
-/* Flex track that slides across */
+/* Flex track that translates for slide transitions */
 .hero-slider {
   display: flex;
   align-items: stretch;
   gap: 16px;
   height: 100%;
-  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
+  /* No 3D transforms */
 }
 
-/* Each slide: 100% of .hero-slider-container width so active slide
-   fills exactly the container area; inactive slides peek from sides */
+/* Each slide — same width as the container (88% viewport) */
 .hero-slide {
   position: relative;
-  flex: 0 0 100%; /* fills container width = the main viewing area */
+  flex: 0 0 100%; /* 100% of .hero-slider-container = 88vw active area */
   height: 100%;
-  opacity: 0.5;
-  filter: brightness(0.55);
-  transform: scale(0.97);
-  transition: opacity 0.55s ease, transform 0.55s ease, filter 0.55s ease;
-  border-radius: 10px;
+  /* Subtle dim for adjacent slides — NO scale, NO translateZ */
+  opacity: 0.6;
+  filter: brightness(0.65);
+  transition: opacity 0.5s ease, filter 0.5s ease;
+  border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
   background-color: var(--bg-light);
 }
 
-/* Hero image: contain so full image is visible — no aggressive crop */
+/* Hero image: cover fill — shows the full banner beautifully */
 .hero-bg-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center center;
   display: block;
   image-rendering: auto;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
 }
 
-/* Per-slide fine-tuning (retain center framing) */
+/* Per-slide image position fine-tuning */
 .hero-slide-1 .hero-bg-img { object-position: center center; }
 .hero-slide-2 .hero-bg-img { object-position: center center; }
 .hero-slide-3 .hero-bg-img { object-position: center center; }
@@ -1521,15 +1523,15 @@ header, #header-container {
 .hero-slide-5 .hero-bg-img { object-position: center center; }
 .hero-slide-6 .hero-bg-img { object-position: center center; }
 
+/* Active slide — full brightness, no scale changes */
 .hero-slide.active {
   opacity: 1;
   filter: brightness(1);
-  transform: scale(1);
   z-index: 2;
   cursor: default;
 }
 
-/* Subtle dark gradient overlay for CTA text legibility (only on active) */
+/* Gradient overlay for CTA text legibility (active slide only) */
 .hero-slide.active::before {
   content: '';
   position: absolute;
@@ -1537,19 +1539,19 @@ header, #header-container {
   background: linear-gradient(
     to top,
     rgba(30, 8, 18, 0.55) 0%,
-    rgba(30, 8, 18, 0.15) 40%,
-    transparent 70%
+    rgba(30, 8, 18, 0.10) 40%,
+    transparent 65%
   );
   pointer-events: none;
   z-index: 1;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
-/* Hero CTA Overlay - real button positioned bottom-left */
+/* Hero CTA Overlay — bottom-left, animates in when slide is active */
 .hero-cta-overlay {
   position: absolute;
   bottom: 60px;
-  left: 24px;
+  left: 32px;
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -1557,7 +1559,7 @@ header, #header-container {
   gap: 18px;
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.7s ease 0.3s, transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s;
+  transition: opacity 0.6s ease 0.25s, transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.25s;
 }
 
 .hero-slide.active .hero-cta-overlay {
@@ -1602,14 +1604,6 @@ header, #header-container {
   overflow: hidden;
 }
 
-.hero-cta-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0);
-  transition: background 0.3s ease;
-}
-
 .hero-cta-btn:hover {
   background: linear-gradient(135deg, var(--soft-gold) 0%, var(--champagne-gold) 100%);
   transform: translateY(-3px);
@@ -1630,7 +1624,7 @@ header, #header-container {
   transform: translateX(4px);
 }
 
-/* Hero navigation arrows — positioned on the outer container */
+/* Hero nav arrows — positioned over the slider on left/right */
 .hero-nav-btn {
   position: absolute;
   top: 50%;
@@ -1646,15 +1640,13 @@ header, #header-container {
   justify-content: center;
   cursor: pointer;
   z-index: 20;
-  transition: var(--transition-smooth);
-  color: var(--luxury-burgundy);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
 
 .hero-nav-btn:hover {
   background-color: #fff;
   border-color: var(--champagne-gold);
-  transform: translateY(-50%) scale(1.08);
   box-shadow: 0 6px 20px rgba(0,0,0,0.18);
 }
 
@@ -1665,12 +1657,11 @@ header, #header-container {
   flex-shrink: 0;
 }
 
-/* Arrows position against .hero-carousel-outer (position:relative).
-   left/right values place them centred in the 80px peek lanes */
-.hero-nav-prev { left: 20px; }
-.hero-nav-next { right: 20px; }
+/* Arrow positions: inside the outer wrapper, flanking the active slide */
+.hero-nav-prev { left: calc(6% - 22px); }
+.hero-nav-next { right: calc(6% - 22px); }
 
-/* Keep legacy hero-slide-content if used anywhere */
+/* Legacy hero-slide-content (if referenced elsewhere) */
 .hero-slide-content {
   background-color: rgba(15, 76, 67, 0.8);
   backdrop-filter: blur(15px);
@@ -1703,6 +1694,7 @@ header, #header-container {
   margin-top: 10px;
 }
 
+/* Slide indicators */
 .hero-indicators {
   position: relative;
   display: flex;
@@ -1724,6 +1716,93 @@ header, #header-container {
 .hero-indicator.active {
   background-color: var(--luxury-burgundy);
   width: 44px;
+}
+
+/* ==============================================
+   HERO RESPONSIVE BREAKPOINTS
+   ============================================== */
+
+/* Laptop / mid-size desktop */
+@media (max-width: 1280px) {
+  .hero-slider-container {
+    width: 90%;
+    aspect-ratio: 2.4 / 1;
+  }
+  .hero-nav-prev { left: calc(5% - 22px); }
+  .hero-nav-next { right: calc(5% - 22px); }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .hero-carousel-outer {
+    margin: 12px auto 0;
+  }
+  .hero-slider-container {
+    width: 96%;
+    aspect-ratio: 2.0 / 1;
+  }
+  /* Slightly reduced gap on tablet */
+  .hero-slider {
+    gap: 10px;
+  }
+  .hero-nav-prev { left: calc(2% - 22px); }
+  .hero-nav-next { right: calc(2% - 22px); }
+  .hero-cta-overlay {
+    bottom: 32px;
+    left: 20px;
+    gap: 12px;
+  }
+  .hero-cta-btn {
+    padding: 12px 24px;
+    font-size: 12px;
+  }
+}
+
+/* Mobile — full width, no peeking neighbours */
+@media (max-width: 600px) {
+  .hero-carousel-outer {
+    margin: 0;
+    overflow: hidden;
+  }
+  .hero-slider-container {
+    width: 100%;        /* Full width on mobile */
+    aspect-ratio: 1.6 / 1;
+    overflow: hidden;   /* Hide any side edges */
+  }
+  /* On mobile, each slide = full container width — no peeking */
+  .hero-slide {
+    opacity: 1;
+    filter: brightness(1);
+    border-radius: 0;
+  }
+  /* Still dim off-screen slides (they won't be visible anyway) */
+  .hero-slide:not(.active) {
+    opacity: 0.5;
+    filter: brightness(0.65);
+  }
+  .hero-slider {
+    gap: 0;
+  }
+  .hero-nav-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .hero-nav-prev { left: 8px; }
+  .hero-nav-next { right: 8px; }
+  .hero-cta-overlay {
+    bottom: 20px;
+    left: 14px;
+    gap: 10px;
+  }
+  .hero-cta-btn {
+    padding: 10px 18px;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  .hero-eyebrow {
+    font-size: 10px;
+    padding: 4px 12px;
+  }
 }
 
 /* Dynamic 3D Reels Slider */
