@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aurelia Fine Jewellery | A TATA Enterprise Product</title>
+  <meta name="description" content="Aurelia Fine Jewellery – A TATA Enterprise. Discover our exquisite collection of gold, diamond, and bridal jewellery. Shop solitaires, bangles, necklaces and more.">
   <link rel="icon" type="image/png" href="assets/images/aurelia_logo.png">
-  <link rel="stylesheet" href="styles.css?v=1.1">
+  <!-- Preload first hero image for LCP performance -->
+  <link rel="preload" as="image" href="assets/images/hero-1.png" fetchpriority="high">
+  <link rel="stylesheet" href="styles.css?v=1.2">
 </head>
 <body>
 
@@ -14,42 +17,95 @@
 
   <main>
     <!-- 1. Hero Banner Slider -->
-    <section class="hero-slider-container">
+    <section class="hero-slider-container" id="hero-slider-container">
       <div class="hero-slider" id="hero-slider">
-        <!-- Slide 1 (Burgundy Background) -->
+
+        <!-- Slide 1 – Collections launch -->
         <div class="hero-slide active" style="background-image: url('assets/images/hero-1.png'), linear-gradient(135deg, #4A102A 0%, #5A1833 100%);">
-          
+          <div class="hero-cta-overlay">
+            <span class="hero-eyebrow">New Collection</span>
+            <a href="collections.html" class="hero-cta-btn" id="hero-cta-slide-1">
+              <span>Explore Collection</span>
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </a>
+          </div>
         </div>
-        <!-- Slide 2 (Champagne Gold/Burgundy Background) -->
+
+        <!-- Slide 2 – Gold Jewellery -->
         <div class="hero-slide" style="background-image: url('assets/images/hero-2.png'), linear-gradient(135deg, #C8A46A 0%, #4A102A 100%);">
-          
+          <div class="hero-cta-overlay">
+            <span class="hero-eyebrow">Gold Jewellery</span>
+            <a href="gold-jewellery.html" class="hero-cta-btn" id="hero-cta-slide-2">
+              <span>Shop Gold</span>
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </a>
+          </div>
         </div>
-        <!-- Slide 3 (Gold/Maroon Background) -->
+
+        <!-- Slide 3 – Diamond Jewellery -->
         <div class="hero-slide" style="background-image: url('assets/images/hero-3.png'), linear-gradient(135deg, #D9B77A 0%, #5A1833 100%);">
-          
+          <div class="hero-cta-overlay">
+            <span class="hero-eyebrow">Diamond Jewellery</span>
+            <a href="diamond-jewellery.html" class="hero-cta-btn" id="hero-cta-slide-3">
+              <span>Discover Diamonds</span>
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </a>
+          </div>
         </div>
-        <!-- Slide 4 (Burgundy/Teal Background) -->
+
+        <!-- Slide 4 – Bridal Collection -->
         <div class="hero-slide" style="background-image: url('assets/images/hero-4.png'), linear-gradient(135deg, #4A102A 0%, #0F4C43 100%);">
-          
+          <div class="hero-cta-overlay">
+            <span class="hero-eyebrow">Bridal Collection</span>
+            <a href="bridal-collection.html" class="hero-cta-btn" id="hero-cta-slide-4">
+              <span>Shop Bridal</span>
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </a>
+          </div>
         </div>
-        <!-- Slide 5 (Teal/Gold Background) -->
+
+        <!-- Slide 5 – New Arrivals -->
         <div class="hero-slide" style="background-image: url('assets/images/hero-5.png'), linear-gradient(135deg, #0F4C43 0%, #C8A46A 100%);">
-          
+          <div class="hero-cta-overlay">
+            <span class="hero-eyebrow">Just Arrived</span>
+            <a href="new-arrivals.html" class="hero-cta-btn" id="hero-cta-slide-5">
+              <span>Shop New Arrivals</span>
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </a>
+          </div>
         </div>
-        <!-- Slide 6 (Maroon/Gold Background) -->
+
+        <!-- Slide 6 – All Jewellery -->
         <div class="hero-slide" style="background-image: url('assets/images/hero-6.jpg'), linear-gradient(135deg, #5A1833 0%, #D9B77A 100%);">
-          
+          <div class="hero-cta-overlay">
+            <span class="hero-eyebrow">Aurelia Fine Jewellery</span>
+            <a href="collections.html" class="hero-cta-btn" id="hero-cta-slide-6">
+              <span>Discover Jewellery</span>
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </a>
+          </div>
         </div>
+
       </div>
+
       <!-- Hero Slide Indicators -->
       <div class="hero-indicators">
-        <span class="hero-indicator active" onclick="goToHeroSlide(0)"></span>
-        <span class="hero-indicator" onclick="goToHeroSlide(1)"></span>
-        <span class="hero-indicator" onclick="goToHeroSlide(2)"></span>
-        <span class="hero-indicator" onclick="goToHeroSlide(3)"></span>
-        <span class="hero-indicator" onclick="goToHeroSlide(4)"></span>
-        <span class="hero-indicator" onclick="goToHeroSlide(5)"></span>
+        <span class="hero-indicator active" onclick="goToHeroSlide(0)" aria-label="Slide 1"></span>
+        <span class="hero-indicator" onclick="goToHeroSlide(1)" aria-label="Slide 2"></span>
+        <span class="hero-indicator" onclick="goToHeroSlide(2)" aria-label="Slide 3"></span>
+        <span class="hero-indicator" onclick="goToHeroSlide(3)" aria-label="Slide 4"></span>
+        <span class="hero-indicator" onclick="goToHeroSlide(4)" aria-label="Slide 5"></span>
+        <span class="hero-indicator" onclick="goToHeroSlide(5)" aria-label="Slide 6"></span>
       </div>
+
+      <!-- Hero prev/next nav arrows -->
+      <button class="hero-nav-btn hero-nav-prev" onclick="goToHeroSlide(window._currentHeroSlide - 1)" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </button>
+      <button class="hero-nav-btn hero-nav-next" onclick="goToHeroSlide(window._currentHeroSlide + 1)" aria-label="Next slide">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </button>
+
     </section>
 
     <!-- 2. Collections Preview -->

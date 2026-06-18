@@ -69,6 +69,16 @@ function injectGlobalShellComponents() {
     footerContainer.innerHTML = getFooterHTML();
   }
 
+  // Inject mobile nav overlay
+  if (!document.getElementById("mobile-nav-overlay")) {
+    const mobileNavMarkup = getMobileNavHTML();
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = mobileNavMarkup;
+    // Append the actual mobile-nav-overlay element
+    const navEl = tempDiv.querySelector("#mobile-nav-overlay") || tempDiv.firstElementChild;
+    if (navEl) document.body.appendChild(navEl);
+  }
+
   // Inject drawers and overlays if not present
   if (!document.getElementById("search-overlay-container")) {
     const searchDiv = document.createElement("div");
@@ -137,6 +147,13 @@ function initSearchPlaceholderCycling() {
 function getHeaderHTML() {
   return `
     <div class="header-main">
+      <!-- Hamburger button (mobile) -->
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <div class="header-logo">
         <a href="index.html">
           <img src="assets/images/aurelia_logo.png" alt="Aurelia Fine Jewellery" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'180\\\' height=\\\'48\\\'><rect width=\\\'180\\\' height=\\\'48\\\' fill=\\\'transparent\\\'/><text x=\\\'90\\\' y=\\\'28\\\' font-family=\\\'Cormorant Garamond\\\' font-weight=\\\'700\\\' font-size=\\\'20\\\' fill=\\\'%234A102A\\\' text-anchor=\\\'middle\\\'>AURELIA</text></svg>'">
@@ -155,6 +172,11 @@ function getHeaderHTML() {
       </div>
 
       <div class="header-icons">
+        <!-- Mobile search trigger -->
+        <button class="mobile-search-btn" id="mobile-search-trigger" aria-label="Search" title="Search">
+          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        </button>
+
         <a href="collections.html" class="header-icon-link" title="Diamond">
           <svg viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 12L2 9z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M2 9h20M8 3l4 6 4-6" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
         </a>
@@ -486,6 +508,108 @@ function getSearchOverlayHTML() {
   `;
 }
 
+function getMobileNavHTML() {
+  return `
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+      <div class="mobile-nav-panel" id="mobile-nav-panel">
+        <div class="mobile-nav-header">
+          <img src="assets/images/aurelia_logo.png" alt="Aurelia" onerror="this.style.display='none'">
+          <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
+        </div>
+
+        <div class="mobile-nav-body">
+          <div class="mobile-nav-section-title">Shop Jewellery</div>
+          <a href="collections.html" class="mobile-nav-link">
+            All Jewellery
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="gold-jewellery.html" class="mobile-nav-link">
+            Gold Jewellery
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="diamond-jewellery.html" class="mobile-nav-link">
+            Diamond Jewellery
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="earrings.html" class="mobile-nav-link">
+            Earrings
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="rings.html" class="mobile-nav-link">
+            Rings
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="necklaces.html" class="mobile-nav-link">
+            Necklaces
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="bracelets.html" class="mobile-nav-link">
+            Bracelets
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="bangles.html" class="mobile-nav-link">
+            Bangles
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="pendants.html" class="mobile-nav-link">
+            Pendants
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="mangalsutra.html" class="mobile-nav-link">
+            Mangalsutra
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="chains.html" class="mobile-nav-link">
+            Chains
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+
+          <div class="mobile-nav-section-title">Collections</div>
+          <a href="bridal-collection.html" class="mobile-nav-link">
+            Bridal Collection
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="new-arrivals.html" class="mobile-nav-link">
+            New Arrivals
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="trending-now.html" class="mobile-nav-link">
+            Trending Now
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="gifting.html" class="mobile-nav-link">
+            Gifting
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+
+          <div class="mobile-nav-section-title">Services &amp; Info</div>
+          <a href="store-locator.html" class="mobile-nav-link">
+            Find a Store
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="book-appointment.html" class="mobile-nav-link">
+            Book Appointment
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="gold-rate.html" class="mobile-nav-link">
+            Live Gold Rate
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="about-us.html" class="mobile-nav-link">
+            About Aurelia
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="mobile-nav-footer">
+          <a href="login.html" class="btn btn-secondary">Sign In</a>
+          <a href="collections.html" class="btn btn-primary">Shop Now</a>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function getCartDrawerHTML() {
   return `
     <div class="drawer-backdrop" id="cart-drawer-backdrop"></div>
@@ -643,10 +767,76 @@ function initGlobalInteractions() {
         if (wishlistBackdrop) wishlistBackdrop.classList.remove("active");
       }
       if (modalOverlay) modalOverlay.classList.remove("active");
+      // Close mobile nav on Escape
+      const mNavOverlay = document.getElementById("mobile-nav-overlay");
+      if (mNavOverlay) {
+        mNavOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+        const mBtn = document.getElementById("mobile-menu-btn");
+        if (mBtn) { mBtn.classList.remove("open"); mBtn.setAttribute("aria-expanded", "false"); }
+      }
     }
   });
 
+
   initSearchPlaceholderCycling();
+
+  // Mobile hamburger menu toggle
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const mobileNavOverlay = document.getElementById("mobile-nav-overlay");
+  const mobileNavClose = document.getElementById("mobile-nav-close");
+  const mobileNavPanel = document.getElementById("mobile-nav-panel");
+
+  const openMobileMenu = () => {
+    if (mobileNavOverlay) mobileNavOverlay.classList.add("active");
+    if (mobileMenuBtn) {
+      mobileMenuBtn.classList.add("open");
+      mobileMenuBtn.setAttribute("aria-expanded", "true");
+    }
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeMobileMenu = () => {
+    if (mobileNavOverlay) mobileNavOverlay.classList.remove("active");
+    if (mobileMenuBtn) {
+      mobileMenuBtn.classList.remove("open");
+      mobileMenuBtn.setAttribute("aria-expanded", "false");
+    }
+    document.body.style.overflow = "";
+  };
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener("click", openMobileMenu);
+  }
+
+  if (mobileNavClose) {
+    mobileNavClose.addEventListener("click", closeMobileMenu);
+  }
+
+  // Close menu on overlay background click
+  if (mobileNavOverlay) {
+    mobileNavOverlay.addEventListener("click", (e) => {
+      if (e.target === mobileNavOverlay || !mobileNavPanel?.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+  }
+
+  // Mobile search trigger
+  const mobileSearchTrigger = document.getElementById("mobile-search-trigger");
+  if (mobileSearchTrigger) {
+    mobileSearchTrigger.addEventListener("click", () => {
+      const searchOverlay = document.getElementById("search-overlay-box");
+      if (searchOverlay) {
+        searchOverlay.classList.add("active");
+        const inp = document.getElementById("search-overlay-input");
+        if (inp) {
+          inp.focus();
+          renderLiveSearchResults("");
+        }
+      }
+    });
+  }
 }
 
 function renderLiveSearchResults(query) {
@@ -1387,9 +1577,13 @@ function initHeroSlider() {
   const indicators = document.querySelectorAll(".hero-indicator");
   if (slides.length === 0) return;
 
-  // Window-bound global function called by indicator onclick attributes
+  // Expose current slide index for arrow buttons in HTML
+  window._currentHeroSlide = 0;
+
+  // Window-bound global function called by indicator onclick attributes and arrow btns
   window.goToHeroSlide = function(index) {
-    currentHeroSlide = (index + slides.length) % slides.length;
+    currentHeroSlide = ((index % slides.length) + slides.length) % slides.length;
+    window._currentHeroSlide = currentHeroSlide;
 
     slides.forEach((slide, idx) => {
       if (idx === currentHeroSlide) {
@@ -1413,7 +1607,7 @@ function initHeroSlider() {
     stopAutoplay();
     heroSlideInterval = setInterval(() => {
       window.goToHeroSlide(currentHeroSlide + 1);
-    }, 4500); // Transitions every 4.5 seconds
+    }, 4500);
   };
 
   const stopAutoplay = () => {
@@ -1428,6 +1622,32 @@ function initHeroSlider() {
   if (container) {
     container.addEventListener("mouseenter", stopAutoplay);
     container.addEventListener("mouseleave", startAutoplay);
+
+    // Touch swipe support for hero slider
+    let heroTouchStartX = 0;
+    let heroTouchStartY = 0;
+
+    container.addEventListener("touchstart", (e) => {
+      heroTouchStartX = e.changedTouches[0].clientX;
+      heroTouchStartY = e.changedTouches[0].clientY;
+    }, { passive: true });
+
+    container.addEventListener("touchend", (e) => {
+      const dx = e.changedTouches[0].clientX - heroTouchStartX;
+      const dy = e.changedTouches[0].clientY - heroTouchStartY;
+      const threshold = 50;
+      // Only handle horizontal swipes
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > threshold) {
+        if (dx < 0) {
+          // Swipe left -> next slide
+          window.goToHeroSlide(currentHeroSlide + 1);
+        } else {
+          // Swipe right -> prev slide
+          window.goToHeroSlide(currentHeroSlide - 1);
+        }
+        startAutoplay();
+      }
+    }, { passive: true });
   }
 
   // Initialize first slide and start auto-play
